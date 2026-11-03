@@ -1,0 +1,77 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+
+<section class="form-page-section">
+    <div class="container">
+
+        <div class="form-intro text-center">
+            <span class="section-kicker">TEAM MANAGEMENT</span>
+            <h1 class="section-title">Update Team Details</h1>
+            <div class="player-team-badge">
+                {% if team.logo %}
+                    <img src="{{ team.logo.url }}"
+                         alt="{{ team|capfirst }} logo">
+                {% else %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLet_01HYjerRE4UyOllF48Cl4_tqkaQiVm0q_nvryOA&s=10"
+                         alt="Default team logo">
+                {% endif %}
+
+                <span>{{ team|capfirst }}</span>
+                <span class="team-badge-divider">|</span>
+                <span>{{ team.city|capfirst }}</span>
+            </div>
+        </div>
+
+        <div class="form-card mx-auto">
+
+            <div class="form-card-header">
+                <div class="form-icon">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+                <div>
+                    <h2 class="form-card-title">Team Update</h2>
+                    <p class="form-card-subtitle mb-0">
+                        Edit your team's details below.
+                    </p>
+                </div>
+            </div>
+
+            <form method="post" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+                {% for field in form %}
+                    <label class="form-label" for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.name == 'name' or field.name == 'city' or field.name == 'coach_name' %}
+                            <span class="required-star">*</span>
+                        {% endif %}
+                    </label>
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+                    <button type="submit" class="btn btn-accent btn-lg flex-grow-1">
+                        Save Changes<i class="bi bi-arrow-right ms-2"></i>
+                    </button>
+
+                    <a href="{% url 'teams:details' slug=team.slug %}" class="btn btn-light btn-lg px-4">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
