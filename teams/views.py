@@ -1,4 +1,5 @@
 # from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
@@ -7,11 +8,12 @@ from teams.forms import TeamAddForm, TeamUpdateForm
 from teams.models import Team
 
 
-class AddTeamView(CreateView):
+class AddTeamView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'teams/add_team.html'
     extra_context = {'page_title': 'Register a Team | SoftUni Cup'}
     model = Team
     form_class = TeamAddForm
+    permission_required = 'teams.add_team'
 
     def get_success_url(self):
         return reverse('teams:details', kwargs={'slug': self.object.slug})
@@ -50,13 +52,14 @@ class TeamDetailsView(DetailView):
         context['current_points'] = current_points
         # context['upcoming_games'] = Game.objects.filter(status='UP', host_team=self.object) | Game.objects.filter(status='UP', guest_team=self.object)
         # context['finished_games'] = Game.objects.filter(status='F', host_team=self.object) | Game.objects.filter(status='F', guest_team=self.object)
-        context['players'] = self.object.players.order_by('shirt_number')
+        # context['players'] = self.object.players.order_by('shirt_number')
         return context
 
-class TeamUpdateView(UpdateView):
+class TeamUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     template_name = 'teams/update_team.html'
     model = Team
     form_class = TeamUpdateForm
+    permission_required = 'teams.change_team'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -66,9 +69,10 @@ class TeamUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('teams:details', kwargs={'slug': self.object.slug})
 
-class TeamDeleteView(DeleteView):
+class TeamDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     template_name = 'teams/delete_team.html'
     extra_context = {'page_title': 'Delete Team | SoftUni Cup'}
     model = Team
     context_object_name = 'team'
     success_url = reverse_lazy('teams:list')
+    permission_required = 'teams.delete_team'

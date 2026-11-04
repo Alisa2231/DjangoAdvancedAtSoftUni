@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
-UserModel = get_user_model()
+from accounts.forms import RegistrationForm
 
 
 class SoftUniLoginView(LoginView):
@@ -39,7 +39,7 @@ def logout_view(request):
 class RegistrationView(CreateView):
     template_name = 'accounts/registration.html'
     extra_context = {'page_title': 'Registration | SoftUni Cup'}
-    form_class = UserCreationForm
+    form_class = RegistrationForm
     success_url = reverse_lazy('teams:list')
 
 # class SoftUniLogoutView(LogoutView):
