@@ -10,6 +10,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 
 from accounts.forms import RegistrationForm, ProfileUpdateForm
+from common.mixins import UserIsOwnerMixin
 
 UserModel = get_user_model()
 
@@ -68,7 +69,7 @@ class ProfileView(LoginRequiredMixin, DetailView):
     context_object_name = 'user'
     extra_context = {'page_title': 'Profile | SoftUni Cup'}
 
-class ProfileEditView(LoginRequiredMixin, UpdateView):
+class ProfileEditView(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
     model = UserModel
     form_class = ProfileUpdateForm
     template_name = 'accounts/profile_edit.html'
@@ -86,7 +87,7 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
 #         return redirect('accounts:profile')
 #     return render(request, 'accounts/profile_edit.html', {'form':form, 'page_title': 'Update Profile | SoftUni Cup'})
 
-class ProfileDeleteView(LoginRequiredMixin, DeleteView):
+class ProfileDeleteView(LoginRequiredMixin, UserIsOwnerMixin, DeleteView):
     template_name = 'accounts/profile_delete.html'
     extra_context = {'page_title': 'Delete Profile | SoftUni Cup'}
     model = UserModel

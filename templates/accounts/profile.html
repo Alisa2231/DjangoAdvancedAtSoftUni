@@ -11,6 +11,7 @@
     <p>Is active: {{ user.is_active }}</p>
     <p>Is superuser: {{ user.is_superuser }}</p>
     <p>ID: {{ user.id }}</p>
+    <p>Role: {{ user.role }}</p>
 
     <li class="ms-lg-2">
         <a href="{% url 'accounts:update_profile' pk=request.user.id %}" class="btn btn-accent btn-sm px-4">

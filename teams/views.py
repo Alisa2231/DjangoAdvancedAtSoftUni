@@ -3,17 +3,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
+from common.mixins import UserIsACoachMixin
 # from games.models import Game
 from teams.forms import TeamAddForm, TeamUpdateForm
 from teams.models import Team
 
 
-class AddTeamView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
+class AddTeamView(LoginRequiredMixin, UserIsACoachMixin, CreateView):
     template_name = 'teams/add_team.html'
     extra_context = {'page_title': 'Register a Team | SoftUni Cup'}
     model = Team
     form_class = TeamAddForm
-    permission_required = 'teams.add_team'
+    # permission_required = 'teams.add_team'
 
     def get_success_url(self):
         return reverse('teams:details', kwargs={'slug': self.object.slug})
