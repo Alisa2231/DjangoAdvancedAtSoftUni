@@ -7,7 +7,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
-from django.views.generic import CreateView, UpdateView, DetailView
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 
 from accounts.forms import RegistrationForm, ProfileUpdateForm
 
@@ -85,3 +85,12 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
 #         form.save()
 #         return redirect('accounts:profile')
 #     return render(request, 'accounts/profile_edit.html', {'form':form, 'page_title': 'Update Profile | SoftUni Cup'})
+
+class ProfileDeleteView(LoginRequiredMixin, DeleteView):
+    template_name = 'accounts/profile_delete.html'
+    extra_context = {'page_title': 'Delete Profile | SoftUni Cup'}
+    model = UserModel
+    context_object_name = 'user'
+    success_url = reverse_lazy('home')
+
+

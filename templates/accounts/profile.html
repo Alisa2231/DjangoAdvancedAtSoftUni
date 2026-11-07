@@ -16,6 +16,9 @@
         <a href="{% url 'accounts:update_profile' pk=request.user.id %}" class="btn btn-accent btn-sm px-4">
            Update Profile
         </a>
+        <a href="{% url 'accounts:delete_profile' pk=request.user.id %}" class="btn btn-accent btn-sm px-4">
+           Delete Profile
+        </a>
     </li>
 
 

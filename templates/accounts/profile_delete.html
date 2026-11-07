@@ -1,0 +1,50 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<section class="delete-team-page">
+    <div class="delete-team-card">
+
+        <div class="delete-icon-wrapper">
+            <i class="bi bi-shield-exclamation"></i>
+        </div>
+
+        <p class="delete-eyebrow">PROFILE MANAGEMENT</p>
+
+        <h1>Delete Profile</h1>
+
+        <p class="delete-intro">
+            Are you sure you want to delete your profile?
+        </p>
+
+        <div class="team-preview">
+
+            <div class="team-preview-info">
+                <h2>{{ user.get_full_name }}</h2>
+            </div>
+        </div>
+
+        <div class="delete-warning">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            <p>
+                <strong>This action cannot be undone.</strong>
+            </p>
+        </div>
+
+        <form method="post" class="delete-team-form">
+            {% csrf_token %}
+
+            <a href="{% url 'accounts:profile' pk=user.id %}"
+               class="btn-cancel">
+                <i class="bi bi-arrow-left"></i>
+                Cancel
+            </a>
+
+            <button type="submit" class="btn-delete">
+                <i class="bi bi-trash3"></i>
+                Delete Profile
+            </button>
+        </form>
+
+    </div>
+</section>
+{% endblock %}
