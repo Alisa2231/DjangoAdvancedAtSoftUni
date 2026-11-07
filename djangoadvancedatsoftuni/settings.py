@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 
+import accounts
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -32,6 +34,8 @@ ALLOWED_HOSTS = []
 
 PROJECT_APPS = [
     'teams',
+    'common',
+    'accounts',
 ]
 
 INSTALLED_APPS = [
@@ -132,9 +136,11 @@ STATICFILES_DIRS = [BASE_DIR / 'static',]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-LOGIN_REDIRECT_URL = 'accounts:profile'
+LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'accounts:login'
+
+AUTH_USER_MODEL = 'accounts.SoftUniCupUser'
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration

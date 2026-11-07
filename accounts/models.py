@@ -1,3 +1,10 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
+class SoftUniCupUser(AbstractUser):
+    class Role(models.TextChoices):
+        GUEST = 'Guest', 'Guest'
+        COACH = 'Coach', 'Coach'
+        STAFF = 'Staff', 'Staff'
+
+    role = models.CharField(max_length=5, choices=Role)

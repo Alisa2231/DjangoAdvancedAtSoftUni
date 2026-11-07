@@ -28,15 +28,30 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Standings</a>
                     </li>
-                    <li class="nav-item ms-lg-2">
-                        <a href="{% url 'accounts:login' %}" class="btn btn-accent btn-sm px-4">
-                            Login
-                        </a>
-                    </li>
-                    <form method="post" action="{% url 'accounts:logout' %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-accent btn-sm px-4">Log Out</button>
-                    </form>
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item ms-lg-2">
+                            <a href="{% url 'accounts:profile' pk=user.id %}" class="btn btn-accent btn-sm px-4">
+                                Profile
+                            </a>
+                        </li>
+                        <form method="post" action="{% url 'accounts:logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-accent btn-sm px-4">Log Out</button>
+                        </form>
+                    {% else %}
+                        <li class="nav-item ms-lg-2">
+                            <a href="{% url 'accounts:login' %}" class="btn btn-accent btn-sm px-4">
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item ms-lg-2">
+                            <a href="{% url 'accounts:registration' %}" class="btn btn-accent btn-sm px-4">
+                                Register
+                            </a>
+                        </li>
+                    {% endif %}
+
                 </ul>
             </div>
         </div>

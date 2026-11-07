@@ -1,10 +1,9 @@
 {% extends 'common/base.html' %}
 
 {% block content %}
-    <h1>{{ status }}</h1>
-    <p>{{ user}}</p>
-    <p>Username: {{ username }}</p>
-    <p>Full name: {{ full_name }}</p>
+    <h1>{{ user}}</h1>
+    <p>Username: {{ user.username }}</p>
+    <p>Full name: {{ user.get_full_name }}</p>
     <p>First name: {{ user.first_name }}</p>
     <p>Last name: {{ user.last_name }}</p>
     <p>Email: {{ user.email }}</p>
@@ -12,6 +11,12 @@
     <p>Is active: {{ user.is_active }}</p>
     <p>Is superuser: {{ user.is_superuser }}</p>
     <p>ID: {{ user.id }}</p>
+
+    <li class="ms-lg-2">
+        <a href="{% url 'accounts:update_profile' pk=request.user.id %}" class="btn btn-accent btn-sm px-4">
+           Update Profile
+        </a>
+    </li>
 
 
 
