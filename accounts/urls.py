@@ -4,15 +4,15 @@ from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 from django.urls import path, reverse_lazy, include
 from django.views import View
 
-from accounts.views import SoftUniLoginView, RegistrationView, login_view, logout_view, ProfileEditView, \
-    ProfileView, ProfileDeleteView
+from accounts.views import SoftUniLoginView, login_view, logout_view, ProfileEditView, \
+    ProfileView, ProfileDeleteView, registration_view
 
 app_name = 'accounts'
 
 urlpatterns = [
     path('login/', SoftUniLoginView.as_view(), name='login'),
     path('logout/', logout_view, name='logout'),
-    path('registration/', RegistrationView.as_view(), name='registration'),
+    path('registration/', registration_view, name='registration'),
     path('<int:pk>/', include([
         path('profile/', ProfileView.as_view(), name='profile'),
         path('edit-profile/', ProfileEditView.as_view(), name='update_profile'),

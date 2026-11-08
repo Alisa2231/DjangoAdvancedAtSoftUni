@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.models import Permission, Group
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
@@ -40,11 +41,32 @@ def logout_view(request):
         logout(request)
         return redirect('home')
 
-class RegistrationView(CreateView):
-    template_name = 'accounts/registration.html'
-    extra_context = {'page_title': 'Registration | SoftUni Cup'}
-    form_class = RegistrationForm
-    success_url = reverse_lazy('home')
+# class RegistrationView(CreateView):
+#     template_name = 'accounts/registration.html'
+#     extra_context = {'page_title': 'Registration | SoftUni Cup'}
+#     form_class = RegistrationForm
+#     success_url = reverse_lazy('home')
+
+def registration_view(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = UserModel.objects.get(username=request.POST['username'])
+            if user.role == 'Staff':
+                group = Group.objects.get(name='Staff')
+            elif user.role == 'Coach':
+                group = Group.objects.get(name='Coaches')
+            else:
+                group = Group.objects.get(name='Guests')
+            user.groups.add(group)
+
+            return redirect('home')
+    else:
+        form = RegistrationForm()
+
+    context = {'form': form, 'page_title': 'Registration | SoftUni Cup'}
+    return render(request, 'accounts/registration.html', context)
 
 # class SoftUniLogoutView(LogoutView):
 #     template_name = 'accounts/logout.html'

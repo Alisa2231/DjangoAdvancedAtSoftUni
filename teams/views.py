@@ -9,12 +9,12 @@ from teams.forms import TeamAddForm, TeamUpdateForm
 from teams.models import Team
 
 
-class AddTeamView(LoginRequiredMixin, UserIsACoachMixin, CreateView):
+class AddTeamView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'teams/add_team.html'
     extra_context = {'page_title': 'Register a Team | SoftUni Cup'}
     model = Team
     form_class = TeamAddForm
-    # permission_required = 'teams.add_team'
+    permission_required = 'teams.add_team'
 
     def get_success_url(self):
         return reverse('teams:details', kwargs={'slug': self.object.slug})
