@@ -1,0 +1,88 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<section class="player-form-page">
+    <div class="player-form-container">
+
+        <!-- Page heading -->
+        <div class="player-form-heading">
+            <div class="player-heading-icon">
+                <i class="bi bi-person-fill-add"></i>
+            </div>
+
+            <p class="player-eyebrow">SQUAD MANAGEMENT</p>
+
+            <h1>Add Player</h1>
+
+            <div class="player-team-badge">
+                {% if team.logo %}
+                    <img src="{{ team.logo.url }}"
+                         alt="{{ team.name|capfirst }} logo">
+                {% else %}
+                    <i class="bi bi-shield-fill"></i>
+                {% endif %}
+
+                <span>{{ team.name|capfirst }}</span>
+                <span class="team-badge-divider">|</span>
+                <span>{{ team.city|capfirst }}</span>
+            </div>
+        </div>
+
+        <!-- Form card -->
+        <div class="player-form-card">
+
+            <div class="player-form-card-header">
+                <div>
+                    <h2>Player Information</h2>
+                    <p>Enter the player's details below.</p>
+                </div>
+
+                <i class="bi bi-card-list"></i>
+            </div>
+
+            <div class="player-form-card-body">
+
+                <p class="required-note">
+                    Fields marked with
+                    <span class="required-star">*</span>
+                    are required.
+                </p>
+
+                {% if form.non_field_errors %}
+                    <div class="form-error-summary" role="alert">
+                        <i class="bi bi-exclamation-circle-fill"></i>
+                        <div>
+                            {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <form method="post" enctype="multipart/form-data" novalidate>
+
+                    {% csrf_token %}
+
+                    {% include 'players/player-form-sections.html' %}
+
+                    <!-- Actions -->
+                    <div class="player-form-actions">
+                        <a href="{% url 'teams:details' slug=team.slug %}"
+                           class="player-btn-cancel">
+                            <i class="bi bi-arrow-left"></i>
+                            Cancel
+                        </a>
+
+                        <button type="submit" class="player-btn-submit">
+                            <i class="bi bi-person-plus-fill"></i>
+                            Add Player
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="game-form-page">
+    <div class="game-form-container">
+
+        <!-- Breadcrumb -->
+        <nav class="game-form-breadcrumb" aria-label="Breadcrumb">
+            <a href="{% url 'games:list' %}">
+                <i class="bi bi-calendar3"></i>
+                Matches &amp; Results
+            </a>
+            <i class="bi bi-chevron-right"></i>
+
+            <a href="{% url 'games:details' slug=game.slug %}">
+                Match Details
+            </a>
+            <i class="bi bi-chevron-right"></i>
+
+            <span>Correct Result</span>
+        </nav>
+
+        <!-- Page Heading -->
+        <div class="game-form-heading">
+            <div class="game-form-heading-icon correct-result-heading-icon">
+                <i class="bi bi-pencil-square"></i>
+            </div>
+
+            <div>
+                <p class="game-form-eyebrow">SOFTUNI CUP</p>
+                <h1>Correct Result</h1>
+                <p>Update the recorded score of a finished match.</p>
+            </div>
+        </div>
+
+        <!-- Main Form Card -->
+        <div class="game-form-card">
+
+            <div class="game-form-card-header">
+                <div>
+                    <h2>Edit Final Score</h2>
+{#                    <p>Edit either score and save the corrected result.</p>#}
+                </div>
+
+                <span class="correct-result-status">
+                    <i class="bi bi-check-circle-fill"></i>
+                    Finished
+                </span>
+            </div>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <div class="game-form-card-body">
+
+                    {% if form.non_field_errors %}
+                        <div class="game-form-error-summary" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            <div>
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Editable Corrected Score -->
+                    <section class="game-form-section">
+
+                        {% include 'games/finish-game-scoreboard.html' %}
+
+                    </section>
+
+                    <!-- Read-only Match Information -->
+                    <section class="game-form-section">
+
+                        {% include 'games/finish-game-info-grid.html' %}
+                        
+                    </section>
+
+                    <!-- Confirmation Note -->
+                    <div class="correct-result-note">
+                        <i class="bi bi-info-circle-fill"></i>
+
+                        <div>
+                            <strong>About correcting a result</strong>
+                            <p>
+                                Saving will replace the existing score
+                                with the values entered above. The match
+                                will remain Finished, and its teams,
+                                venue, date and referee will not change.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Form Actions -->
+                <div class="game-form-actions">
+                    <a href="{% url 'games:details' slug=game.slug %}"
+                       class="game-form-cancel">
+                        <i class="bi bi-x-lg"></i>
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="game-form-submit">
+                        <i class="bi bi-check-lg"></i>
+                        Save Corrected Result
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

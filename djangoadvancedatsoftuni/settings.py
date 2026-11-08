@@ -36,6 +36,8 @@ PROJECT_APPS = [
     'teams',
     'common',
     'accounts',
+    'players',
+    'games',
 ]
 
 INSTALLED_APPS = [

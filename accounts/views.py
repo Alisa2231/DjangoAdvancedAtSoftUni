@@ -97,6 +97,19 @@ class ProfileEditView(LoginRequiredMixin, UserIsOwnerMixin, UpdateView):
     template_name = 'accounts/profile_edit.html'
     extra_context = {'page_title': 'Update Profile | SoftUni Cup'}
 
+    def form_valid(self, form):
+        """If the form is valid, save the associated model."""
+        self.object = form.save()
+        role = self.object.role
+        if role == 'Staff':
+            group = Group.objects.get(name='Staff')
+        elif role == 'Coach':
+            group = Group.objects.get(name='Coaches')
+        else:
+            group = Group.objects.get(name='Guests')
+        self.object.groups.set([group])
+        return super().form_valid(form)
+
     def get_success_url(self):
         return reverse('accounts:profile', kwargs={'pk': self.object.id})
 

@@ -1,0 +1,196 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="game-form-page">
+    <div class="game-form-container">
+
+        <!-- Breadcrumb -->
+        <nav class="game-form-breadcrumb" aria-label="Breadcrumb">
+            <a href="{% url 'games:list' %}">
+                <i class="bi bi-calendar3"></i>
+                Matches &amp; Results
+            </a>
+            <i class="bi bi-chevron-right"></i>
+
+            <a href="{% url 'games:details' slug=game.slug %}">
+                Match Details
+            </a>
+            <i class="bi bi-chevron-right"></i>
+
+            <span>Finish Game</span>
+        </nav>
+
+        <!-- Page Heading -->
+        <div class="game-form-heading">
+            <div class="game-form-heading-icon finish-game-heading-icon">
+                <i class="bi bi-flag-fill"></i>
+            </div>
+
+            <div>
+                <p class="game-form-eyebrow">SOFTUNI CUP</p>
+                <h1>Finish Game</h1>
+                <p>Enter the final result of this match.</p>
+            </div>
+        </div>
+
+        <!-- Main Form Card -->
+        <div class="game-form-card">
+
+            <div class="game-form-card-header">
+                <div>
+                    <h2>Record Final Score</h2>
+                    <p>Confirm the match result to mark it as finished.</p>
+                </div>
+
+                <span class="game-form-status">
+                    <span class="game-form-status-dot"></span>
+                    Upcoming
+                </span>
+            </div>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <div class="game-form-card-body">
+
+                    {% if form.non_field_errors %}
+                        <div class="game-form-error-summary" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            <div>
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Read-only Matchup -->
+                    <section class="game-form-section">
+                        <div class="game-form-section-heading">
+                            <div class="game-form-section-icon">
+                                <i class="bi bi-shield-fill"></i>
+                            </div>
+
+                            <div>
+                                <h3>Participating Teams</h3>
+                                <p>Confirm the teams before entering the score.</p>
+                            </div>
+                        </div>
+
+                        <div class="update-game-matchup">
+
+                            <!-- Host Team -->
+                            <div class="update-game-team">
+                                <div class="update-game-team-logo">
+                                    {% if game.host_team.logo %}
+                                        <img src="{{ game.host_team.logo.url }}"
+                                             alt="{{ game.host_team|capfirst }} logo">
+                                    {% else %}
+                                        <i class="bi bi-shield-fill"></i>
+                                    {% endif %}
+                                </div>
+
+                                <span class="update-game-team-role">HOME</span>
+                                <h4>{{ game.host_team|capfirst }}</h4>
+                                <span class="update-game-team-city">
+                                    {{ game.host_team.city|capfirst }}
+                                </span>
+                            </div>
+
+                            <div class="update-game-versus">
+                                <span>VS</span>
+                            </div>
+
+                            <!-- Guest Team -->
+                            <div class="update-game-team">
+                                <div class="update-game-team-logo">
+                                    {% if game.guest_team.logo %}
+                                        <img src="{{ game.guest_team.logo.url }}"
+                                             alt="{{ game.guest_team|capfirst }} logo">
+                                    {% else %}
+                                        <i class="bi bi-shield-fill"></i>
+                                    {% endif %}
+                                </div>
+
+                                <span class="update-game-team-role">AWAY</span>
+                                <h4>{{ game.guest_team|capfirst }}</h4>
+                                <span class="update-game-team-city">
+                                    {{ game.guest_team.city|capfirst }}
+                                </span>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- Read-only Match Information -->
+                    <section class="game-form-section">
+                        <div class="game-form-section-heading">
+                            <div class="game-form-section-icon">
+                                <i class="bi bi-info-circle"></i>
+                            </div>
+
+                            <div>
+                                <h3>Match Information</h3>
+                                <p>Scheduled details for this fixture.</p>
+                            </div>
+                        </div>
+
+                        {% include 'games/finish-game-info-grid.html' %}
+
+                    </section>
+
+                    <!-- Editable Final Score -->
+                    <section class="game-form-section">
+                        <div class="game-form-section-heading">
+                            <div class="game-form-section-icon finish-game-score-icon">
+                                <i class="bi bi-trophy"></i>
+                            </div>
+
+                            <div>
+                                <h3>Final Score</h3>
+                                <p>Enter the number of goals scored by each team.</p>
+                            </div>
+                        </div>
+                        
+                        {% include 'games/finish-game-scoreboard.html' %}
+
+                    </section>
+
+                    <!-- Confirmation Note -->
+                    <div class="finish-game-confirmation-note">
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <div>
+                            <strong>Ready to finish this match?</strong>
+                            <p>
+                                Saving the result will change the match
+                                status from Upcoming to Finished.
+                                You can correct the score later if needed,
+                                but the match cannot be returned to Upcoming.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Form Actions -->
+                <div class="game-form-actions">
+                    <a href="{% url 'games:details' slug=game.slug %}"
+                       class="game-form-cancel">
+                        <i class="bi bi-x-lg"></i>
+                        Cancel
+                    </a>
+
+                    <button type="submit" class="game-form-submit">
+                        <i class="bi bi-flag-fill"></i>
+                        Finish Game
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
