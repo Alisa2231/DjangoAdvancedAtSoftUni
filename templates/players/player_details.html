@@ -64,17 +64,21 @@
             </div>
 
             <div class="player-profile-actions">
-                <a href="{% url 'players:update' team_slug=team.slug pk=player.pk %}"
-                   class="player-action-btn player-edit-btn">
-                    <i class="bi bi-pencil-square"></i>
-                    Update Player Details
-                </a>
+                {% if perms.players.change_player %}
+                    <a href="{% url 'players:update' team_slug=team.slug pk=player.pk %}"
+                       class="player-action-btn player-edit-btn">
+                        <i class="bi bi-pencil-square"></i>
+                        Update Player Details
+                    </a>
+                {% endif %}
 
-                <a href="{% url 'players:delete' team_slug=team.slug pk=player.pk %}"
-                   class="player-action-btn player-delete-btn">
-                    <i class="bi bi-trash3"></i>
-                    Delete Player
-                </a>
+                {% if perms.players.delete_player %}
+                    <a href="{% url 'players:delete' team_slug=team.slug pk=player.pk %}"
+                       class="player-action-btn player-delete-btn">
+                        <i class="bi bi-trash3"></i>
+                        Delete Player
+                    </a>
+                {% endif %}
 
                 <a href="{% url 'teams:details' slug=team.slug %}"
                    class="player-action-btn player-back-btn">

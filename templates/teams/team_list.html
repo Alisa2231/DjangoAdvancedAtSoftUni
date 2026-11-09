@@ -17,11 +17,13 @@
                 </p>
             </div>
 
-            <a href="{% url 'teams:add' %}" class="btn btn-accent btn-lg">
-                <i class="bi bi-plus-lg me-2"></i>
-                Register New Team
-                <i class="bi bi-arrow-right ms-2"></i>
-            </a>
+            {% if perms.teams.add_team %}
+                <a href="{% url 'teams:add' %}" class="btn btn-accent btn-lg">
+                    <i class="bi bi-plus-lg me-2"></i>
+                    Register New Team
+                    <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            {% endif %}
         </div>
 
         <div class="teams-grid">
@@ -78,10 +80,12 @@
                 <div class="teams-empty">
                     <i class="bi bi-shield-plus"></i>
                     <h2>No teams registered yet</h2>
-                    <p>Be the first to register a team for the SoftUni Cup!</p>
-                    <a href="{% url 'teams:add' %}" class="btn btn-accent">
-                        Register Your Team
-                    </a>
+                    {% if perms.teams.add_team %}
+                        <p>Be the first to register a team for the SoftUni Cup!</p>
+                        <a href="{% url 'teams:add' %}" class="btn btn-accent">
+                            Register Your Team
+                        </a>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

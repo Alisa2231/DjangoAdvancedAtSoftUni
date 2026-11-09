@@ -37,22 +37,29 @@
             </div>
 
             <div class="team-profile-actions">
-                <a href="{% url 'players:add' team_slug=team.slug%}" class="btn btn-accent">
-                    <i class="bi bi-person-plus me-2"></i>
-                    Add Players
-                </a>
+                {% if perms.players.add_player %}
+                    <a href="{% url 'players:add' team_slug=team.slug%}" class="btn btn-accent">
+                        <i class="bi bi-person-plus me-2"></i>
+                        Add Players
+                    </a>
+                {% endif %}
 
-                <a href="{% url 'teams:update' slug=team.slug%}"
-                   class="btn btn-outline-secondary">
-                    <i class="bi bi-pencil-square me-2"></i>
-                    Update Team Details
-                </a>
+                {% if perms.teams.change_team %}
+                    <a href="{% url 'teams:update' slug=team.slug%}"
+                       class="btn btn-outline-secondary">
+                        <i class="bi bi-pencil-square me-2"></i>
+                        Update Team Details
+                    </a>
+                {% endif %}
 
-                <a href="{% url 'teams:delete' slug=team.slug%}"
-                   class="btn btn-outline-danger">
-                    <i class="bi bi-trash3 me-2"></i>
-                    Delete Team
-                </a>
+                {% if perms.teams.delete_team %}
+
+                    <a href="{% url 'teams:delete' slug=team.slug%}"
+                       class="btn btn-outline-danger">
+                        <i class="bi bi-trash3 me-2"></i>
+                        Delete Team
+                    </a>
+                {% endif %}
             </div>
         </div>
 
@@ -243,10 +250,12 @@
                     <h2>Players</h2>
                 </div>
 
-                <a href="{% url 'players:add' team_slug=team.slug %}" class="btn btn-accent">
-                    <i class="bi bi-plus-lg me-2"></i>
-                    Add Player
-                </a>
+                {% if perms.players.add_player %}
+                    <a href="{% url 'players:add' team_slug=team.slug %}" class="btn btn-accent">
+                        <i class="bi bi-plus-lg me-2"></i>
+                        Add Player
+                    </a>
+                {% endif %}
             </div>
 
             <div class="team-roster-list">
@@ -278,10 +287,12 @@
                     <div class="details-empty">
                         <i class="bi bi-people"></i>
                         <p>No players have been added to this team yet.</p>
-                        <a href="{% url 'players:add' team_slug=team.slug %}"
-                           class="btn btn-accent">
-                            Add First Player
-                        </a>
+                        {% if perms.players.add_player %}
+                            <a href="{% url 'players:add' team_slug=team.slug %}"
+                               class="btn btn-accent">
+                                Add First Player
+                            </a>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
