@@ -156,31 +156,35 @@
 
         <!-- Match Actions -->
         <div class="game-details-actions">
-            {% if game.status == 'UP' %}
-                <a href="{% url 'games:update' slug=game.slug %}"
-                   class="game-action-btn action-edit">
-                    <i class="bi bi-pencil-square"></i>
-                    Update Game Details
-                </a>
+            {% if perms.games.change_game %}
+                {% if game.status == 'UP' %}
+                    <a href="{% url 'games:update' slug=game.slug %}"
+                       class="game-action-btn action-edit">
+                        <i class="bi bi-pencil-square"></i>
+                        Update Game Details
+                    </a>
 
-                <a href="{% url 'games:finish' slug=game.slug %}"
-                   class="game-action-btn action-finish">
-                    <i class="bi bi-flag-fill"></i>
-                    Game Finished
-                </a>
-            {% else %}
-                <a href="{% url 'games:correct' slug=game.slug %}"
-                   class="game-action-btn action-correct">
-                    <i class="bi bi-pencil-square"></i>
-                    Correct Result
-                </a>
+                    <a href="{% url 'games:finish' slug=game.slug %}"
+                       class="game-action-btn action-finish">
+                        <i class="bi bi-flag-fill"></i>
+                        Game Finished
+                    </a>
+                {% else %}
+                    <a href="{% url 'games:correct' slug=game.slug %}"
+                       class="game-action-btn action-correct">
+                        <i class="bi bi-pencil-square"></i>
+                        Correct Result
+                    </a>
+                {% endif %}
             {% endif %}
 
-            <a href="{% url 'games:delete' slug=game.slug %}"
-               class="game-action-btn action-delete">
-                <i class="bi bi-trash3"></i>
-                Delete Game
-            </a>
+            {% if perms.games.delete_game %}
+                <a href="{% url 'games:delete' slug=game.slug %}"
+                   class="game-action-btn action-delete">
+                    <i class="bi bi-trash3"></i>
+                    Delete Game
+                </a>
+            {% endif %}
 
             <a href="{% url 'games:list' %}"
                class="game-action-btn action-back">

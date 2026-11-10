@@ -18,10 +18,12 @@
                 </p>
             </div>
 
-            <a href="{% url 'games:add' %}" class="games-add-btn">
-                <i class="bi bi-plus-lg"></i>
-                Add Game
-            </a>
+            {% if perms.games.add_game %}
+                <a href="{% url 'games:add' %}" class="games-add-btn">
+                    <i class="bi bi-plus-lg"></i>
+                    Add Game
+                </a>
+            {% endif %}
         </div>
 
         <!-- Upcoming Games -->
@@ -133,14 +135,16 @@
                             <i class="bi bi-calendar-x"></i>
                         </div>
                         <h3>No upcoming games</h3>
-                        <p>
-                            There are no matches scheduled yet.
-                            Add a game to get the tournament started!
-                        </p>
-                        <a href="{% url 'games:add' %}" class="games-empty-btn">
-                            <i class="bi bi-plus-lg"></i>
-                            Schedule a Game
-                        </a>
+                        {% if perms.games.add_game %}
+                            <p>
+                                There are no matches scheduled yet.
+                                Add a game to get the tournament started!
+                            </p>
+                            <a href="{% url 'games:add' %}" class="games-empty-btn">
+                                <i class="bi bi-plus-lg"></i>
+                                Schedule a Game
+                            </a>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
