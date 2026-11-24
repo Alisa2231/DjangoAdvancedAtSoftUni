@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fab7b221-8854-4be0-bb03-380400253d36" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Alisa/WD/PycharmProjects/SoftUni/7_Python_Web/DjangoAdvancedAtSoftUni" value="3LajK0STqmn0mJwUkjka5HlW8p6" />
+    </persistenceIdMap>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000101708117857" />
+      <entry key="S5" value="1.0147158139728834" />
+      <entry key="S10" value="1.2110837580122795" />
+      <entry key="S30" value="2.447829309271043" />
+      <entry key="S60" value="3.489831456930285" />
+      <entry key="M2" value="4.725519952820415" />
+      <entry key="M5" value="6.928443616533021" />
+      <entry key="M10" value="8.499327547001275" />
+      <entry key="M15" value="9.204229123561246" />
+      <entry key="M30" value="10.029908896891461" />
+      <entry key="H1" value="10.516192968301114" />
+      <entry key="H2" value="11.499891334705778" />
+      <entry key="H4" value="15.846891162042724" />
+      <entry key="D1" value="148.51080991454825" />
+      <entry key="W1" value="902.4367503602673" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="1.3143007642E-312" />
+      <entry key="M5" value="2.1449251636154675E-125" />
+      <entry key="M10" value="6.168820435137708E-63" />
+      <entry key="M15" value="4.1761606963991784E-42" />
+      <entry key="M30" value="2.9083470611612402E-21" />
+      <entry key="H1" value="9.479536540569213E-11" />
+      <entry key="H2" value="3.132330074584243E-5" />
+      <entry key="H4" value="0.027483132301853248" />
+      <entry key="D1" value="20.510092065558297" />
+      <entry key="W1" value="168.65173082843506" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.45691572511470024" />
+      <entry key="MS500" value="0.8550021778919727" />
+      <entry key="S2" value="0.9615978348804545" />
+      <entry key="S5" value="0.9947819493836448" />
+      <entry key="S10" value="1.173343618702105" />
+      <entry key="S30" value="2.3841569110219205" />
+      <entry key="S60" value="3.4385898092104434" />
+      <entry key="M2" value="4.689716182504097" />
+      <entry key="M5" value="6.907963821971573" />
+      <entry key="M10" value="8.487081730495921" />
+      <entry key="M15" value="9.19548310577484" />
+      <entry key="M30" value="10.02520006173312" />
+      <entry key="H1" value="10.513743521049715" />
+      <entry key="H2" value="11.498649688810687" />
+      <entry key="H4" value="15.87366185349997" />
+      <entry key="D1" value="169.01951762436127" />
+      <entry key="W1" value="1071.0871547443226" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="3LajJsFMypF8IfNfhDlWr3q8LUH" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="ensembleEnabled" value="false" />
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.DjangoAdvancedAtSoftUni.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Alisa/WD/PycharmProjects/SoftUni/7_Python_Web/DjangoAdvancedAtSoftUni&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Alisa\WD\PycharmProjects\SoftUni\7_Python_Web\DjangoAdvancedAtSoftUni" />
+      <recent name="C:\Alisa\WD\PycharmProjects\SoftUni\7_Python_Web\DjangoAdvancedAtSoftUni\teams" />
+      <recent name="C:\Alisa\WD\PycharmProjects\SoftUni\7_Python_Web\DjangoAdvancedAtSoftUni\templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="DjangoAdvancedAtSoftUni" type="Python.DjangoServer" factoryName="Django server">
+      <module name="DjangoAdvancedAtSoftUni" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="djangoadvancedatsoftuni.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-PY-261.27258.51" />
+        <option value="bundled-python-sdk-84eaadda3698-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.27258.51" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fab7b221-8854-4be0-bb03-380400253d36" name="Changes" comment="" />
+      <created>1793699004569</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1793699004569</updated>
+      <workItem from="1793699005648" duration="75596000" />
+      <workItem from="1794840825236" duration="4062000" />
+      <workItem from="1795083180860" duration="1554000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/djangoadvancedatsoftuni/urls.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/accounts/views.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
