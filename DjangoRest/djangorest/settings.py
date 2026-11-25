@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 PROJECT_APPS = [
     'books_api',
+    'garage_api',
 ]
 
 INSTALLED_APPS = [
