@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from rest_framework import status
+from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from books_api.models import Book
-from books_api.serializers import BooksSerializer
+from books_api.models import Book, Author
+from books_api.serializers import BooksSerializer, AuthorSerializer
 
 
 class ListBooksView(APIView):
@@ -38,3 +39,7 @@ class DetailBookView(APIView):
         book = Book.objects.get(pk=id)
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class AuthorsListView(ListCreateAPIView):
+    queryset = Author.objects.prefetch_related('books').all()
+    serializer_class = AuthorSerializer
